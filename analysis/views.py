@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
+from django.urls import reverse
 from collections import Counter
 from django.core.paginator import Paginator
 
@@ -19,8 +20,10 @@ def index(request):
     else:
         form = FileForm()
     files = File.objects.all()
+    words = Word.objects.all()
     return render(request, 'analysis/index.html', {'form': form,
-                                                   'files': files})
+                                                   'files': files,
+                                                   'words': words})
 
 
 def file_to_analysis(request, id):
@@ -55,3 +58,8 @@ def file_to_analysis(request, id):
     }
 
     return render(request, 'analysis/analysis.html', context=context)
+
+def delete_all_data(request):
+    Word.objects.all().delete()
+    File.objects.all().delete()
+    return HttpResponseRedirect(reverse("analysis:index")) 
