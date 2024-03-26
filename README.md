@@ -1,6 +1,7 @@
 ## О проекте
 
 Назначение: Анализ важности слова текстового файла TF-IDF
+
 Видео работы веб-приложения: https://drive.google.com/drive/folders/14H0KDP_fbCegek0RPtHLiG0sXi9AiW48?usp=sharing
 
 ### В данном проекте реализовано:
